@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+body {
+    background-image: url(https://png.pngtree.com/background/20230525/original/pngtree-this-is-an-animation-showing-a-grocery-store-picture-image_2738887.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    background-color: rgb(199, 217, 224);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-image: url(https://midwestcommunity.org/wp-content/uploads/2018/02/Groceries-ThinkstockPhotos-836782690.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 800px;
+    height: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    margin: 20px 40px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+ul {
+    border: 0px solid black;
+    border-radius: 10px;
+    width: 90%;
+    margin: 30px;
+    background: #eee;
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+li span {
+    flex-grow: 1;
+}
+
+.delete {
+    background-color: #f44336;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete:hover {
+    background-color: #d32f2f;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1 style="color: yellow;">Groceries List</h1>
+    <input type="text" id="newTask" placeholder="Add a new task">
+    <button id="addTask">Add Task</button>
+    <ul id="taskList">
+        <!-- Tasks will be added dynamically here -->
+    </ul>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+
+$(document).ready(function() {
+    // Add Task
+    $('#addTask').on('click', function() {
+        var newTask = $('#newTask').val();
+        if (newTask !== '') {
+            $('#taskList').append('<li><span>' + newTask + '</span><button class="delete">Delete</button></li>');
+            $('#newTask').val('');
+        }
+    });
+
+    // Delete Task
+    $('#taskList').on('click', '.delete', function() {
+        $(this).closest('li').remove();
+    });
+});
+
+</script>
+</body>
+</html>
